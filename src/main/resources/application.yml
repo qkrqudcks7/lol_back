@@ -1,3 +1,6 @@
+parks.app.jwtSecret: qkrqudcks7
+parks.app.jwtExpirationMs: 86400000
+
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
