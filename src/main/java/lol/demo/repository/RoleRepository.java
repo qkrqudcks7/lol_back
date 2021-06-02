@@ -1,0 +1,12 @@
+package lol.demo.repository;
+
+import lol.demo.domain.ERole;
+import lol.demo.domain.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface RoleRepository extends JpaRepository<Role,Long> {
+
+    Optional<Role> findByName(ERole name);
+}
