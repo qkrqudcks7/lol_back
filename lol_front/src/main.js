@@ -3,11 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueMoment from 'vue-moment'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.min.css'
 import VeeValidate from 'vee-validate'
 
+Vue.use(VueMoment)
 Vue.use(BootstrapVue)
 Vue.use(VeeValidate)
 Vue.config.productionTip = false
