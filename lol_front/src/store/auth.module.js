@@ -27,8 +27,29 @@ export const auth = {
           commit('registerSuccess')
           return Promise.resolve(response.data)
         }, error => {
+          commit('registerFailure')
           return Promise.reject(error.response.data)
         })
+    }
+  },
+  mutations: {
+    loginSuccess (state, user) {
+      state.status = {loggedIn: true}
+      state.user = user
+    },
+    loginFailure (state) {
+      state.status = {}
+      state.user = null
+    },
+    logout (state) {
+      state.status = {}
+      state.user = null
+    },
+    registerSuccess (state) {
+      state.status = {}
+    },
+    registerFailure (state) {
+      state.status = {}
     }
   }
 }

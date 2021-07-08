@@ -11,7 +11,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '**': {
+      '/lol': {
         target: 'https://kr.api.riotgames.com',
         changeOrigin: true,
       }
