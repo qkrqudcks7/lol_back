@@ -52,7 +52,7 @@ export default {
   name: 'App',
   computed: {
     currentUser () {
-      return this.$store.state.auth.user
+      return this.$store.state.auth.initialState.user
     }
   },
   methods: {

@@ -5,7 +5,9 @@ const initialState = user ? {state: {loggedIn: true}, user} : {status: {}, user:
 
 export const auth = {
   namespaced: true,
-  state: initialState,
+  state: {
+    initialState
+  },
   actions: {
     login ({commit}, user) {
       return AuthService.login(user)
