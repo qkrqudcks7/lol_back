@@ -26,7 +26,7 @@ public class Champion {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "position_id",joinColumns = @JoinColumn(name = "champion_id"),inverseJoinColumns = @JoinColumn(name = "position_id"))
-    private Set<Position> position = new HashSet<>();
+    private final Set<Position> position = new HashSet<>();
 
     @Column(nullable = false)
     private String passive;
