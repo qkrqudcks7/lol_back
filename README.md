@@ -1,5 +1,9 @@
 # league of legend 전적 검색 back-end
 
+## 빌드(gradle, 젠킨스)
+
+## 배포 (EC2 , RDS)
+
 
 ## 로그인 처리(JWT , oauth2(추가예정))
 
