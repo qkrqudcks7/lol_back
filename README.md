@@ -9,3 +9,7 @@
 
 
 ![image](https://user-images.githubusercontent.com/66015002/127429984-6dd46f53-4fb2-4976-aaa4-f78dff8a65a3.png)
+
+## DB(RDS, 챔피언 상세정보 저장)
+
+![image](https://user-images.githubusercontent.com/66015002/127766860-db041f47-bf34-4cde-aa70-cd786e6ce75b.png)
