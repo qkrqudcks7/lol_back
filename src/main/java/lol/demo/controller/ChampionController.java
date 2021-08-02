@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 public class ChampionController {
 
     public final ChampionRepository championRepository;
+    private final String key = "RGAPI-80064fff-b604-4ae4-9f70-1a9065490f36";
 
     @GetMapping("/allchampion")
     public ResponseEntity<?> getAllBoard() {
@@ -37,5 +40,38 @@ public class ChampionController {
         ChampionResponse championResponse = new ChampionResponse(m.getId(), m.getName(), m.getPosition(), m.getPassive(), m.getPassive_text(), m.getPassive_img(), m.getQ(), m.getQ_text(), m.getQ_img(), m.getW(), m.getW_text(), m.getW_img(), m.getE(), m.getE_text(), m.getE_img(), m.getR(), m.getR_text(), m.getR_img(), m.getImg(), m.getTier());
 
         return new ResponseEntity<>(championResponse,HttpStatus.OK);
+    }
+
+    @GetMapping("/findid/{name}")
+    public ResponseEntity<?> findId(@PathVariable("name") String name) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + name + "?api_key=" + key, String.class);
+
+        return forEntity;
+    }
+
+    @GetMapping("/findleague/{id}")
+    public ResponseEntity<?> findLeague(@PathVariable("id") String id) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/" + id + "?api_key=" + key, String.class);
+
+        return forEntity;
+    }
+
+    @GetMapping("/findmatch/{accountId}")
+    public ResponseEntity<?> findMatch(@PathVariable("accountId") String accountId) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/" + accountId + "?api_key=" + key + "&beginIndex=" + 0 + "&endIndex=" +19, String.class);
+
+        return forEntity;
+    }
+
+    @GetMapping("/finddetailmatch/{matchId}")
+    public ResponseEntity<?> findDetailMatch(@PathVariable("matchId") String matchId) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("https://kr.api.riotgames.com/lol/match/v4/matches/" + matchId + "?api_key=" + key, String.class);
+
+        return forEntity;
     }
 }
