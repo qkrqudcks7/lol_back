@@ -5,6 +5,11 @@
 ## 배포 (EC2 , RDS)
 
 
+(참고용)
+8080 포트 확인 :  sudo netstat -lnp | grep 8080
+포트 죽이기 : sudo kill (아이디)
+
+
 ## 로그인 처리(JWT , oauth2(추가예정))
 
 
