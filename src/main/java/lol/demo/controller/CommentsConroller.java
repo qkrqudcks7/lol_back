@@ -15,7 +15,6 @@ import org.w3c.dom.stylesheets.LinkStyle;
 public class CommentsConroller {
 
     private final CommentsService commentsService;
-    private final BoardRepository boardRepository;
 
     @PostMapping("/comments/{id}")
     public ResponseEntity<?> comments(@PathVariable("id") Long id,

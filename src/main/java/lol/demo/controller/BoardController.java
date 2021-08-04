@@ -7,18 +7,24 @@ import lol.demo.repository.BoardRepository;
 import lol.demo.security.UserDetailsImpl;
 import lol.demo.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditorSupport;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/board")
+@Slf4j
 public class BoardController {
 
     public final BoardRepository boardRepository;
@@ -35,8 +41,9 @@ public class BoardController {
 
     @PostMapping("/addboard")
     public ResponseEntity<?> addBoard(@AuthenticationPrincipal UserDetailsImpl userDetails,
-                                      @Valid @RequestBody BoardRequest boardRequest) {
-        return boardService.addBoard(userDetails,boardRequest);
+                                      @Valid BoardRequest boardRequest,
+                                      MultipartFile multipartFile) throws IOException {
+        return boardService.addBoard(userDetails,boardRequest,multipartFile);
     }
 
     @GetMapping("/oneboard/{id}")
