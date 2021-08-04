@@ -8,7 +8,7 @@
 - JPA (ORM)
 - JWT (Login)
 - AWS (Infra)
-- jenkins & Codedeploy (CI/CD)
+- jenkins (CI/CD)
 - S3 (file upload)
 
 ## 배포
