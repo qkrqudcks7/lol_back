@@ -11,9 +11,10 @@
 - jenkins & Codedeploy (CI/CD)
 - S3 (file upload)
 
-## 빌드(gradle, 젠킨스)
+## 배포
 
-## 배포 (EC2 , RDS)
+![image](https://user-images.githubusercontent.com/66015002/128163954-cea47773-5f7b-40bf-988f-da6ab36c5bf5.png)
+
 
 (참고용)
 
