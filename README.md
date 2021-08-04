@@ -1,5 +1,16 @@
 # league of legend 전적 검색 back-end
 
+
+## 사용한 기술 스택
+- Spring boot (API Server)
+- Spring Security (Security)
+- Mysql (RDB)
+- JPA (ORM)
+- JWT (Login)
+- AWS (Infra)
+- jenkins & Codedeploy (CI/CD)
+- S3 (file upload)
+
 ## 빌드(gradle, 젠킨스)
 
 ## 배포 (EC2 , RDS)
