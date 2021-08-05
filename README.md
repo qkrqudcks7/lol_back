@@ -32,7 +32,7 @@
 
 ![image](https://user-images.githubusercontent.com/66015002/127766860-db041f47-bf34-4cde-aa70-cd786e6ce75b.png)
 
-## file upload
+## file upload (front단의 ckeditor로 대체, 기능만 구현)
 
 S3 bucket 이용, multipart form-data로 파일 업로드
 ![image](https://user-images.githubusercontent.com/66015002/128161006-f5ee5f32-1fd8-41b9-9093-aa9a8906ed7a.png)
