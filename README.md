@@ -5,7 +5,7 @@
 - Spring boot (API Server)
 - Spring Security (Security)
 - Mysql (RDB)
-- JPA (ORM)
+- JPA,Query_DSL (ORM)
 - JWT (Login)
 - AWS (Infra)
 - jenkins (CI/CD)
