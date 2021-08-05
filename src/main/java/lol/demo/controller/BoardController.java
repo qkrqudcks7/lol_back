@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +39,7 @@ public class BoardController {
         List<BoardResponse> collect = all.stream()
                 .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(),m.getImgUrl(), m.getViewCount(), m.getLocalDateTime()))
                 .collect(Collectors.toList());
+        Collections.reverse(collect);
         return new ResponseEntity<>(collect, HttpStatus.OK);
     }
 
