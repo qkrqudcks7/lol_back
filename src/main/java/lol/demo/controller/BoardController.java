@@ -4,6 +4,7 @@ import lol.demo.domain.Board;
 import lol.demo.payload.request.BoardRequest;
 import lol.demo.payload.response.BoardResponse;
 import lol.demo.repository.BoardRepository;
+import lol.demo.repository.BoardRepositoryExtension;
 import lol.demo.security.UserDetailsImpl;
 import lol.demo.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -59,5 +60,25 @@ public class BoardController {
     @DeleteMapping("/oneboard/{id}")
     public void deleteBoard(@PathVariable("id") Long id) {
         boardRepository.deleteById(id);
+    }
+
+    @GetMapping("/topviewcount")
+    public ResponseEntity<?> top3ViewCount() {
+        List<Board> result = boardRepository.findByViewCount();
+        List<BoardResponse> collect = result.stream()
+                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(), m.getImgUrl(), m.getViewCount(), m.getLocalDateTime()))
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(collect,HttpStatus.OK);
+
+    }
+
+    @GetMapping("/findbykeyword/{keyword}")
+    public ResponseEntity<?> findByKeyword(@PathVariable("keyword") String keyword) {
+        List<Board> result = boardRepository.findByKeyword(keyword);
+        List<BoardResponse> collect = result.stream()
+                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(), m.getImgUrl(), m.getViewCount(), m.getLocalDateTime()))
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(collect,HttpStatus.OK);
     }
 }
