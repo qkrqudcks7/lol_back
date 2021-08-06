@@ -5,7 +5,7 @@
 - Spring boot (API Server)
 - Spring Security (Security)
 - Mysql (RDB)
-- JPA (ORM)
+- JPA,Query_DSL (ORM)
 - JWT (Login)
 - AWS (Infra)
 - jenkins (CI/CD)
@@ -32,7 +32,8 @@
 
 ![image](https://user-images.githubusercontent.com/66015002/127766860-db041f47-bf34-4cde-aa70-cd786e6ce75b.png)
 
-## file upload
+## file upload 
+#### (게시판 업로드: front의 ckeditor 사용, 프로필사진 업로드(예정):s3업로드 사용)
 
 S3 bucket 이용, multipart form-data로 파일 업로드
 ![image](https://user-images.githubusercontent.com/66015002/128161006-f5ee5f32-1fd8-41b9-9093-aa9a8906ed7a.png)
