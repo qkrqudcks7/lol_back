@@ -37,7 +37,7 @@ public class BoardController {
     public ResponseEntity<?> getAllBoard () {
         List<Board> all = boardRepository.findAll();
         List<BoardResponse> collect = all.stream()
-                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(),m.getImgUrl(), m.getViewCount(), m.getLocalDateTime()))
+                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(),m.getImgUrl(), m.getViewCount(),m.getUser().getEmail(), m.getLocalDateTime()))
                 .collect(Collectors.toList());
         Collections.reverse(collect);
         return new ResponseEntity<>(collect, HttpStatus.OK);
@@ -69,7 +69,7 @@ public class BoardController {
     public ResponseEntity<?> top3ViewCount() {
         List<Board> result = boardRepository.findByViewCount();
         List<BoardResponse> collect = result.stream()
-                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(), m.getImgUrl(), m.getViewCount(), m.getLocalDateTime()))
+                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(), m.getImgUrl(), m.getViewCount(),m.getUser().getEmail(), m.getLocalDateTime()))
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(collect,HttpStatus.OK);
@@ -80,7 +80,7 @@ public class BoardController {
     public ResponseEntity<?> findByKeyword(@PathVariable("keyword") String keyword) {
         List<Board> result = boardRepository.findByKeyword(keyword);
         List<BoardResponse> collect = result.stream()
-                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(), m.getImgUrl(), m.getViewCount(), m.getLocalDateTime()))
+                .map(m -> new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(), m.getImgUrl(), m.getViewCount(),m.getUser().getEmail(), m.getLocalDateTime()))
                 .collect(Collectors.toList());
         return new ResponseEntity<>(collect,HttpStatus.OK);
     }

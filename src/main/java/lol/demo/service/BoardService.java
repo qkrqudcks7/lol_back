@@ -53,7 +53,7 @@ public class BoardService {
         Board m = boardRepository.findById(id).get();
         m.plusViewCount();
         boardRepository.save(m);
-        BoardResponse boardResponse = new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(),m.getImgUrl(), m.getViewCount(), m.getLocalDateTime());
+        BoardResponse boardResponse = new BoardResponse(m.getId(), m.getUser().getUsername(), m.getSubject(), m.getText(),m.getImgUrl(), m.getViewCount(),m.getUser().getEmail(), m.getLocalDateTime());
 
         return new ResponseEntity<>(boardResponse, HttpStatus.OK);
     }
