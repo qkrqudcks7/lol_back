@@ -40,15 +40,3 @@ spring:
     level:
       org.hibernate.SQL: DEBUG
       # org.hibernate.type: trace
-
-security:
-  oauth2:
-    client:
-      registration:
-        google:
-          clientId: 199950875098-8km1ijbs6uosfq5m63vkrinb6q5dkgqf.apps.googleusercontent.com
-          clientSecret: PO5eYmm9SXUKWr3K0KGQbruJ
-          redirectUri: "{baseUrl}/api/auth/signin"
-          scope:
-            - email
-            - profile
