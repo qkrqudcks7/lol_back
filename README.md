@@ -4,10 +4,10 @@
 ## 사용한 기술 스택
 - Spring boot (API Server)
 - Spring Security (Security)
-- Mysql (RDB)
+- Mysql, RDS (RDB)
 - JPA,Query_DSL (ORM)
 - JWT (Login)
-- AWS (Infra)
+- AWS - EC2 (Infra)
 - jenkins (CI/CD)
 - S3 (file upload)
 
