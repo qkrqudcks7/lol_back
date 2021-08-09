@@ -74,4 +74,13 @@ public class ChampionController {
 
         return forEntity;
     }
+
+    @GetMapping("/findnowgame/{id}")
+    public ResponseEntity<?> findNowGame(@PathVariable("id") String id) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("https://kr.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + id + "?api_key=" + key, String.class);
+
+        return forEntity;
+
+    }
 }
