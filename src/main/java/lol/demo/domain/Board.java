@@ -41,6 +41,19 @@ public class Board {
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private final List<Comments> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private final List<Like> likes = new ArrayList<>();
+
+    @Column(nullable = false)
+    private int likeCount=0;
+
+    public void plusLikeCount() {
+        this.likeCount++;
+    }
+    public void minusLikeCount() {
+        this.likeCount--;
+    }
+
     public void plusViewCount() {
         this.viewCount++;
     }

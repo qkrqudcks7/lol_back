@@ -46,7 +46,7 @@ public class CommentsService {
         Board board = boardRepository.findById(id).get();
         List<Comments> comments = board.getComments();
         List<CommentResponse> collect = comments.stream()
-                .map(m -> new CommentResponse(m.getUser().getUsername(), m.getComment(), m.getLocalDateTime()))
+                .map(m -> new CommentResponse(m.getId(),m.getUser().getUsername(), m.getComment(), m.getLocalDateTime()))
                 .collect(Collectors.toList());
         return new ResponseEntity<>(collect, HttpStatus.OK);
     }

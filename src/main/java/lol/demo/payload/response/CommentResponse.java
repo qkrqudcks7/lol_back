@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CommentResponse {
 
+    private Long id;
     private String writer;
     private String comment;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM월 dd일 HH시 mm분 ss초")
