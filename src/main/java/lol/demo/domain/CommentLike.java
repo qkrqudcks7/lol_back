@@ -1,7 +1,6 @@
 package lol.demo.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,39 +8,38 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@NoArgsConstructor @AllArgsConstructor
-@Builder
-@Table(name = "Likes")
-public class Like {
+@AllArgsConstructor
+@NoArgsConstructor
+public class CommentLike {
 
     @Id @GeneratedValue
-    @Column(name = "like_id")
+    @Column(name = "comment_like_id")
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "board_id", nullable = false)
-    private Board board;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "comments_id", nullable = false)
+    private Comments comments;
+
     private Boolean likeState = false;
 
-    public Like(Board board, User user) {
-        this.likeState = false;
-        this.board = board;
+    public CommentLike(User user, Comments comments) {
         this.user = user;
+        this.comments = comments;
+        this.likeState = false;
     }
 
     public void changeLike() {
         if (this.likeState == false){
             this.likeState = true;
-            this.board.plusLikeCount();
+            this.comments.plusLikeCount();
         }
         else {
             this.likeState = false;
-            this.board.minusLikeCount();
+            this.comments.minusLikeCount();
         }
 
     }

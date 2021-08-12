@@ -11,10 +11,14 @@ import lol.demo.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class LikeService {
 
     private final LikeRepository likeRepository;
@@ -24,13 +28,20 @@ public class LikeService {
     private final BoardRepository boardRepository;
 
     public void addLikeToBoard(Long id, String email) {
+        List<Like> all = likeRepository.findAll();
         User myUser = userRepository.findByEmail(email).get();
         Board myBoard = boardRepository.findById(id).get();
-        Like like = Like.builder()
-                .board(myBoard)
-                .user(myUser)
-                .likeState(false)
-                .build();
+
+        for (Like i : all) {
+            if (i.getBoard().getId().equals(id) && i.getUser().getEmail().equals(email)) {
+                likeRepository.deleteById(i.getId());
+                myBoard.minusLikeCount();
+
+                return;
+            }
+        }
+
+        Like like = new Like(myBoard,myUser);
         like.changeLike();
         likeRepository.save(like);
     }

@@ -51,7 +51,7 @@ public class Board {
         this.likeCount++;
     }
     public void minusLikeCount() {
-        this.likeCount--;
+        this.likeCount-=1;
     }
 
     public void plusViewCount() {

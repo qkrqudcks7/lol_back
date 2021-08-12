@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,9 +28,22 @@ public class Comments {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @OneToMany(mappedBy = "comments", cascade = CascadeType.ALL)
+    private final List<CommentLike> likes = new ArrayList<>();
+
     @Column(nullable = false)
     private String comment;
 
     @Column(nullable = false)
     private LocalDateTime localDateTime;
+
+    @Column(nullable = false)
+    private int likeCount=0;
+
+    public void plusLikeCount() {
+        this.likeCount++;
+    }
+    public void minusLikeCount() {
+        this.likeCount-=1;
+    }
 }
