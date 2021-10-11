@@ -11,6 +11,11 @@
 - jenkins (CI/CD)
 - S3 (file upload)
 
+## ERD
+
+![image](https://user-images.githubusercontent.com/66015002/136747365-daa2257b-2221-4469-95a1-800dc3b969b8.png)
+
+
 ## 배포
 
 ![image](https://user-images.githubusercontent.com/66015002/128163954-cea47773-5f7b-40bf-988f-da6ab36c5bf5.png)
