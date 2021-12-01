@@ -21,14 +21,8 @@
 ![image](https://user-images.githubusercontent.com/66015002/128163954-cea47773-5f7b-40bf-988f-da6ab36c5bf5.png)
 
 
-(참고용)
 
-8080 포트 확인 :  sudo netstat -lnp | grep 8080
-
-포트 죽이기 : sudo kill (아이디)
-
-
-## 로그인 처리(JWT , oauth2(추가예정))
+## 로그인 처리(JWT)
 
 
 ![image](https://user-images.githubusercontent.com/66015002/127429984-6dd46f53-4fb2-4976-aaa4-f78dff8a65a3.png)
